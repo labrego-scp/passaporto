@@ -99,10 +99,10 @@ def realizar_tentativa():
                 if "Sorry, all appointments for this service are currently booked" in page_source:
                     print("Não há vagas")
                     # Escrever em uma célula
-                    worksheet.update_cell(1, 2, "Não há vagas")
+                    worksheet.update_cell(1, 2, "Nao ha vagas")
                     print("Atualização realizada com sucesso!")
                 else:
-                    print("Há vagas")
+                    print("Ha vagas")
                     # Escrever em uma célula
                     worksheet.update_cell(1, 2, "Há vagas")
                     print("Atualização realizada com sucesso!")
