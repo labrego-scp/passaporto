@@ -1,0 +1,4 @@
+.env
+*.json
+notify.py
+notify_bck00.py
