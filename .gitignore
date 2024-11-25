@@ -5,3 +5,6 @@ notify_bck00.py
 login_bck00.py
 login_bck01.py
 login_bck02.py
+myenv/
+*.pyc
+__pycache__/
