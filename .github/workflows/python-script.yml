@@ -2,7 +2,7 @@ name: Run Python Script
 
 on:
   schedule:
-    - cron: "*/30 * * * *" # Roda a cada 30 minutos
+    - cron: "*/30 * * * *" # A cada 30 minutos
   workflow_dispatch: # Permite rodar manualmente
 
 jobs:
@@ -16,11 +16,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run script
