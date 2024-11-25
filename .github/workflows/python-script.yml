@@ -26,5 +26,12 @@ jobs:
         run: |
           pip install --no-cache-dir -r requirements.txt
 
+      - name: Set environment variables
+        run: |
+          echo "GCHAVE=${{ secrets.GCHAVE }}" >> $GITHUB_ENV
+          echo "SPREADSHEET_ID=${{ secrets.SPREADSHEET_ID }}" >> $GITHUB_ENV
+          echo "MAIL=${{ secrets.MAIL }}" >> $GITHUB_ENV
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
+      
       - name: Run script
         run: python login.py
