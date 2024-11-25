@@ -10,10 +10,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 import time
 from dotenv import load_dotenv
 import os
-#import undetected_chromedriver as uc
-#from undetected_chromedriver import ChromeOptions
-from seleniumbase import Driver
-
 
 load_dotenv()
 
@@ -23,11 +19,21 @@ adress = os.getenv('MAIL')
 password = os.getenv('PASSWORD')
 
 # Configuração do Selenium para rodar em modo headless
-driver = Driver(uc=True, headless=True)
+chrome_options = Options()
+#chrome_options.add_argument("--headless")  # Executa sem abrir o navegador
+chrome_options.add_argument("--disable-gpu")  # Necessário em alguns sistemas
+chrome_options.add_argument("--no-sandbox")  # Melhora compatibilidade em alguns ambientes Linux
+chrome_options.add_argument("--disable-dev-shm-usage")  # Evita problemas de memória em containers
+#chrome_options.add_argument("--enable-unsafe-swiftshader")
+#chrome_options.add_argument("--use-gl=swiftshader")
+#chrome_options.add_argument("--use-gl=swiftshader")
+
+
+
 
 # Configuração do Selenium
-#service = Service("chromedriver/chromedriver.exe")  # Substitua pelo caminho do ChromeDriver
-
+service = Service("chromedriver/chromedriver.exe")  # Substitua pelo caminho do ChromeDriver
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 def realizar_tentativa():
     # Configuração do escopo e autenticação
