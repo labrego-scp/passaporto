@@ -118,7 +118,7 @@ def realizar_tentativa():
 # Repetir até que o processo seja bem-sucedido
 while not realizar_tentativa():
     print("Reiniciando tentativa...")
-    time.sleep(5)  # Aguarda alguns segundos antes de tentar novamente
+    time.sleep(30)  # Aguarda alguns segundos antes de tentar novamente
 
 # Fechar o navegador no final
 driver.quit()
