@@ -46,7 +46,7 @@ def realizar_tentativa():
         driver.get("https://prenotami.esteri.it/Services")  # Substitua pela URL do site
 
         # Aguardar o carregamento da página
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.ID, "login-form"))
         )
 
@@ -65,7 +65,7 @@ def realizar_tentativa():
         submit_button.click()
 
         # Validar sucesso do login com base em um elemento presente na página pós-login
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 20).until(
             EC.presence_of_element_located((By.ID, "dataTableServices_wrapper"))
         )
         print("Login realizado com sucesso!")
@@ -87,7 +87,7 @@ def realizar_tentativa():
                 print("Botão 'Reservar' clicado com sucesso!")
 
                 # Após clicar, verificar o HTML da página para o texto
-                WebDriverWait(driver, 5).until(
+                WebDriverWait(driver, 15).until(
                     EC.presence_of_element_located((By.TAG_NAME, "body"))  # Certifica-se que a página atualizou
                 )
                 page_source = driver.page_source
@@ -104,7 +104,7 @@ def realizar_tentativa():
                 else:
                     print("Ha vagas")
                     # Escrever em uma célula
-                    worksheet.update_cell(1, 2, "Há vagas")
+                    worksheet.update_cell(1, 2, ">>> ATENCAO! Há vagas <<<")
                     print("Atualização realizada com sucesso!")
                 return True  # Sucesso, pode sair do loop
 
