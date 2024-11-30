@@ -105,6 +105,7 @@ def realizar_tentativa():
                     print("Ha vagas")
                     # Escrever em uma célula
                     worksheet.update_cell(1, 2, ">>> ATENCAO! Há vagas <<<")
+                    worksheet.update_cell(1, 3, "Liberou alguma vez")
                     print("Atualização realizada com sucesso!")
                 return True  # Sucesso, pode sair do loop
 
