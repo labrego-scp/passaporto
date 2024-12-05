@@ -116,10 +116,18 @@ def realizar_tentativa():
         print(f"Erro durante a execução: {e}")
         return False  # Repetir em caso de erro
 
-# Repetir até que o processo seja bem-sucedido
-while not realizar_tentativa():
-    print("Reiniciando tentativa...")
-    time.sleep(30)  # Aguarda alguns segundos antes de tentar novamente
+# Repetir até que o processo seja bem-sucedido com um máximo de 5 tentativas
+def chamar_tentativa():
+    i = 0
+    while not realizar_tentativa() and i < 8:
+        print("Reiniciando tentativa...")
+        time.sleep(30)  # Aguarda alguns segundos antes de tentar novamente
+        i += 1
+
+# Acionar a chamada de tentativa 5 vezes
+for i in range(1, 3, 1):
+    chamar_tentativa()
+    time.sleep(120)
 
 # Fechar o navegador no final
 driver.quit()
