@@ -123,10 +123,14 @@ def chamar_tentativa():
         print("Reiniciando tentativa...")
         time.sleep(30)  # Aguarda alguns segundos antes de tentar novamente
         i += 1
+    return i < 8
 
 # Acionar a chamada de tentativa 5 vezes
-for i in range(1, 3, 1):
-    chamar_tentativa()
+for i in range(0, 3, 1):
+    print(f"Tentativa {i+1}")
+    if chamar_tentativa():
+        print("Tentativa bem-sucedida. Encerrando o script.")
+        break  # Sai do loop principal ao encontrar uma tentativa bem-sucedida
     time.sleep(120)
 
 # Fechar o navegador no final
