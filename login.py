@@ -119,19 +119,19 @@ def realizar_tentativa():
 # Repetir até que o processo seja bem-sucedido com um máximo de 5 tentativas
 def chamar_tentativa():
     i = 0
-    while not realizar_tentativa() and i < 8:
+    while not realizar_tentativa() and i < 5:
         print("Reiniciando tentativa...")
         time.sleep(30)  # Aguarda alguns segundos antes de tentar novamente
         i += 1
-    return i < 8
+    return i < 5
 
 # Acionar a chamada de tentativa 5 vezes
-for i in range(0, 3, 1):
+for i in range(0, 4, 1):
     print(f"Tentativa {i+1}")
     if chamar_tentativa():
         print("Tentativa bem-sucedida. Encerrando o script.")
         break  # Sai do loop principal ao encontrar uma tentativa bem-sucedida
-    time.sleep(120)
+    time.sleep(300)
 
 # Fechar o navegador no final
 driver.quit()
