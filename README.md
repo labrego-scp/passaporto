@@ -1,81 +1,83 @@
-# Automação de Agendamento no Prenotami
-Este script automatiza o processo de login e verificação de disponibilidade de agendamentos no site Prenotami, atualizando uma planilha no Google Sheets com as informações obtidas.
+# **Automation of Scheduling on Prenotami**  
 
-## Funcionalidades
-* Realiza login no site Prenotami.
-* Verifica a disponibilidade de serviços, como "Agendamento Primeiro Passaporte".
-* Atualiza uma planilha do Google Sheets com o status de disponibilidade.
-* Realiza várias tentativas automáticas em caso de falhas ou indisponibilidade.
+This script automates the login process and checks for appointment availability on the **Prenotami** website, updating a **Google Sheets** spreadsheet with the retrieved information.  
 
-## Pré-requisitos
+## **Features**  
+- ✅ Logs into the **Prenotami** website.  
+- ✅ Checks the availability of services, such as **"First Passport Appointment"**.  
+- ✅ Updates a **Google Sheets** spreadsheet with the availability status.  
+- ✅ Performs multiple automatic attempts in case of failures or unavailability.  
 
-### Python 3.8+
+## **Prerequisites**  
 
-Bibliotecas necessárias (instale com pip):
-* seleniumbase
-* gspread
-* oauth2client
-* python-dotenv
-  
-## Gerenciamento de navegador:
+### **Python 3.8+**  
 
-O script utiliza o seleniumbase, que gerencia automaticamente o navegador (Chrome) e o ChromeDriver.
-Não é necessário instalar ou configurar manualmente o ChromeDriver.
+Required libraries (install with pip):  
+- `seleniumbase`  
+- `gspread`  
+- `oauth2client`  
+- `python-dotenv`  
 
-## Credenciais para Google Sheets:
-Arquivo JSON com credenciais de uma conta de serviço do Google Cloud.
-Variáveis de ambiente configuradas para acessar credenciais e planilha.
+## **Browser Management**  
 
-## Configuração
+The script uses **seleniumbase**, which **automatically manages** the browser (**Chrome**) and **ChromeDriver**.  
+No manual installation or configuration of **ChromeDriver** is needed.  
 
-1. Criando o arquivo .env
-Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
+## **Credentials for Google Sheets**  
 
-.env:
-GCHAVE=caminho/para/credenciais.json
-SPREADSHEET_ID=id-da-planilha
-MAIL=email-do-usuario
-PASSWORD=senha-do-usuario
-GCHAVE: Caminho para o arquivo JSON com as credenciais do Google.
-SPREADSHEET_ID: ID da planilha do Google Sheets.
-MAIL: E-mail usado para login no site Prenotami.
-PASSWORD: Senha usada para login no site Prenotami.
+- A **JSON** file with credentials from a **Google Cloud** service account.  
+- Environment variables configured to access credentials and the spreadsheet.  
 
-2. Configurando o Google Cloud
-Ative as APIs do Google Sheets e Google Drive no Google Cloud Console.
-Crie um serviço de conta e baixe o arquivo JSON com as credenciais.
-Compartilhe sua planilha do Google Sheets com o e-mail da conta de serviço.
+## **Setup**  
 
-3. Instalando dependências
-Instale as bibliotecas necessárias com o seguinte comando:
+### **1. Creating the .env file**  
+Create a `.env` file in the root of the project with the following variables:  
 
+#### `.env`:  
+```ini
+GCHAVE=path/to/credentials.json
+SPREADSHEET_ID=spreadsheet-id
+MAIL=user-email
+PASSWORD=user-password
+```
+
+2. Setting up Google Cloud
+Enable the Google Sheets and Google Drive APIs in Google Cloud Console.
+Create a service account and download the JSON file with credentials.
+Share your Google Sheets spreadsheet with the service account email.viço.
+
+3. Installing Dependencies
+Install the required libraries with the following command:
+```
 pip install seleniumbase gspread oauth2client python-dotenv
+```
 
+## How to Use
 
-## Como usar
-
-Certifique-se de que o arquivo .env está configurado corretamente.
-Execute o script com:
+Ensure the .env file is correctly configured.
+Run the script with:
+```
 python login.py
+```
 
+## Script Structure
 
-## Estrutura do Script
-
-### Principais Funções
+### Main Functions
 
 #### realizar_tentativa()
-* Faz login no site Prenotami.
-* Verifica a disponibilidade de serviços.
-* Atualiza uma planilha do Google Sheets com o status obtido.
+* Logs into the Prenotami website.
+* Checks for service availability.
+* Updates a Google Sheets spreadsheet with the obtained status.
 
 #### chamar_tentativa()
-* Gerencia o número de tentativas automáticas em caso de falhas ou indisponibilidade.
-* Repetição de Tentativas
-* O script realiza múltiplas tentativas até ser bem-sucedido ou alcançar o limite configurado.
+* Manages the number of automatic attempts in case of failures or unavailability.
+* Retry mechanism - The script performs multiple attempts until it succeeds or reaches the configured limit.
 
-## Notas
-* O seleniumbase gerencia automaticamente o navegador (Chrome) e o ChromeDriver.
-* Não é necessário instalar ou configurar o ChromeDriver manualmente.
-* O script opera no modo headless (sem exibição do navegador).
-* Inclua intervalos entre as tentativas para evitar bloqueios por parte do site.
-* Certifique-se de que o site Prenotami está acessível no momento da execução.
+## Notes
+* ✅ Seleniumbase automatically manages the browser (Chrome) and ChromeDriver.
+* ✅ No need to manually install or configure ChromeDriver.
+* ✅ The script runs in headless mode (without displaying the browser).
+* ✅ Include delays between attempts to avoid being blocked by the website.
+* ✅ Ensure the Prenotami website is accessible at the time of execution.
+
+🚀 This automation simplifies appointment scheduling and tracking for Prenotami!
